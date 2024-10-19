@@ -27,6 +27,8 @@ class TiledMap:
                 for x, y, gid, in layer:
                     tile = self.tmxdata.get_tile_image_by_gid(gid)
                     if tile:
+                        # This block converts the map to ismetric. If we want to disable it
+                        # we need to comment the following code and uncomment the next one.
                         tile = tile.convert_alpha()
                         screen_x = (x - y) * (tilewidth // 2) + (screen_width // 2)
                         screen_y = (x + y) * (tileheight // 2)
