@@ -7,8 +7,6 @@ height = 30
 tilewidth = 32
 tileheight = 16
 
-GREEN = (0, 255, 0)
-
 screen_width = width * tilewidth
 screen_height = height * tileheight
 
@@ -27,7 +25,7 @@ class TiledMap:
                 for x, y, gid, in layer:
                     tile = self.tmxdata.get_tile_image_by_gid(gid)
                     if tile:
-                        # This block converts the map to ismetric. If we want to disable it
+                        # This block converts the map to isometric. If we want to disable it
                         # we need to comment the following code and uncomment the next one.
                         tile = tile.convert_alpha()
                         screen_x = (x - y) * (tilewidth // 2) + (screen_width // 2)
@@ -53,8 +51,12 @@ class Player(pygame.sprite.Sprite):
         self.speed = 1
 
     def move(self, dx, dy):
-        self.map_x += dx
-        self.map_y += dy
+        new_x = self.map_x + dx
+        new_y = self.map_y + dy
+
+        # if 0 <= new_x < map_width and 0 <= new_y < map_height:
+        self.map_x = new_x
+        self.map_y = new_y
 
     def update(self, keys):
         dx = dy = 0

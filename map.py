@@ -7,7 +7,7 @@ pygame.mixer.init()
 clock = pygame.time.Clock()
 
 tmx_map = TiledMap("map/test_map.tmx")
-player = Player(20, 20)
+player = Player(25, 0)
 
 all_sprites = pygame.sprite.Group()
 all_sprites.add(player)
@@ -15,22 +15,23 @@ all_sprites.add(player)
 # Game loop
 running = True
 while running:
+    # Process input (events)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
     keys = pygame.key.get_pressed()
-    player.update(keys)
 
+    # Update
+    all_sprites.update(keys)
+
+    # Draw / r ender
     screen.fill((0, 0, 0))
-
     tmx_map.make_map(screen)
-
     all_sprites.draw(screen)
-    
-    # Update the display
+
+    # After draw everything, flip the display
     pygame.display.flip()
-    # pygame.display.update()
     clock.tick(60)
 
 # Quit Pygame
