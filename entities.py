@@ -42,8 +42,8 @@ class TiledMap:
 
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, image_file, x, y):
-        super().__init__()
+    def __init__(self, image_file, x, y, map_width, map_height):
+        pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(image_file).convert_alpha()  # Load player sprite
         self.rect = self.image.get_rect()
         self.map_x = x
@@ -51,12 +51,8 @@ class Player(pygame.sprite.Sprite):
         self.speed = 1
 
     def move(self, dx, dy):
-        new_x = self.map_x + dx
-        new_y = self.map_y + dy
-
-        # if 0 <= new_x < map_width and 0 <= new_y < map_height:
-        self.map_x = new_x
-        self.map_y = new_y
+        self.map_x += dx
+        self.map_y += dy
 
     def update(self, keys):
         dx = dy = 0
