@@ -42,7 +42,7 @@ class TiledMap:
 
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, image_file, x, y, map_width, map_height):
+    def __init__(self, image_file, x, y):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(image_file).convert_alpha()  # Load player sprite
         self.rect = self.image.get_rect()
