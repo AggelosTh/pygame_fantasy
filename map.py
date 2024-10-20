@@ -7,7 +7,8 @@ pygame.mixer.init()
 clock = pygame.time.Clock()
 
 tmx_map = TiledMap("map/test_map.tmx")
-player = Player(20, 20)
+player_img = 'geralt.bmp'
+player = Player(player_img, 20, 20)
 
 all_sprites = pygame.sprite.Group()
 all_sprites.add(player)
