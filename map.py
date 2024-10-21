@@ -35,6 +35,7 @@ game_over = False
 paused = False
 
 while running:
+    # Process input (events)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -73,7 +74,6 @@ while running:
 
     # Update the display
     pygame.display.flip()
-    # pygame.display.update()
     clock.tick(60)
 
 # Quit Pygame
