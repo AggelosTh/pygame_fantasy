@@ -38,5 +38,3 @@ class TiledMap:
         # temp_surface = pygame.Surface((self.width, self.height))
         self.render(screen)
         # return temp_surface
-
-
