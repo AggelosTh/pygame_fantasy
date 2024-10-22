@@ -1,6 +1,6 @@
 import sys
 import pygame
-from entities import Player, screen, screen_x, screen_y, screen_center, tmx_map, clock
+from entities import Player, screen, screen_center, tmx_map, clock
 
 ###### Helper functions ######
 
@@ -8,7 +8,10 @@ from entities import Player, screen, screen_x, screen_y, screen_center, tmx_map,
 ###### Main Code ######
 
 player_img = 'sad_sprite.png' # Added new sprite because it has clear background and is round so it displays better with new dims
-player = Player(player_img, screen_x, screen_y)
+player = Player(player_img, 20, 20)
+
+tmx_map.load_tiles()
+
 
 all_sprites = pygame.sprite.Group()
 all_sprites.add(player)
@@ -44,9 +47,7 @@ while running:
             player.update(keys)
 
             screen.fill((0, 0, 0))
-
-            tmx_map.make_map(screen)
-
+            tmx_map.draw(screen)
             all_sprites.draw(screen)
 
         if paused:

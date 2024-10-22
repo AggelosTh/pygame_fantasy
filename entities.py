@@ -1,15 +1,8 @@
 import pygame
-from map import TiledMap
-from screen import Screen
+from alt_map import TiledMap
+from screen import screen_width, screen_height
 from pygame.locals import *
 
-
-# Initialize Pygame
-pygame.init()
-pygame.mixer.init()
-
-# Set up the display with V-Sync
-screen_width, screen_height = Screen.get_screen_size()
 screen_center = (screen_width // 2, screen_height // 2)
 
 screen = pygame.display.set_mode((screen_width, screen_height), pygame.FULLSCREEN | pygame.SRCALPHA)
@@ -24,16 +17,18 @@ height = 30
 tilewidth = 32
 tileheight = 16
 
-tmx_map = TiledMap(screen_width, screen_height, filename_map)
+sprite_group = pygame.sprite.Group()
 
-map_width = tmx_map.width # number of tiles horizontally
-map_height = tmx_map.height # number of tiles vertically
+tmx_map = TiledMap(filename_map, sprite_group)
 
-tilewidth = tmx_map.tilewidth
-tileheight = tmx_map.tileheight
+# map_width = tmx_map.width # number of tiles horizontally
+# map_height = tmx_map.height # number of tiles vertically
 
-screen_x = (map_width + map_height) * (tilewidth // 2)
-screen_y = (map_width + map_height) * (tileheight // 2)
+# tilewidth = tmx_map.tilewidth
+# tileheight = tmx_map.tileheight
+
+# screen_x = (map_width + map_height) * (tilewidth // 2)
+# screen_y = (map_width + map_height) * (tileheight // 2)
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, image_file, x, y):
