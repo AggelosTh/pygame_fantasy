@@ -1,12 +1,6 @@
 import pygame
 from alt_map import TiledMap
-from screen import screen_width, screen_height
 from pygame.locals import *
-
-screen_center = (screen_width // 2, screen_height // 2)
-
-screen = pygame.display.set_mode((screen_width, screen_height), pygame.FULLSCREEN | pygame.SRCALPHA)
-pygame.display.set_caption("2D Isometric Game")
 
 clock = pygame.time.Clock()
 
@@ -20,15 +14,6 @@ tileheight = 16
 sprite_group = pygame.sprite.Group()
 
 tmx_map = TiledMap(filename_map, sprite_group)
-
-# map_width = tmx_map.width # number of tiles horizontally
-# map_height = tmx_map.height # number of tiles vertically
-
-# tilewidth = tmx_map.tilewidth
-# tileheight = tmx_map.tileheight
-
-# screen_x = (map_width + map_height) * (tilewidth // 2)
-# screen_y = (map_width + map_height) * (tileheight // 2)
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, image_file, x, y):
@@ -65,6 +50,3 @@ class Player(pygame.sprite.Sprite):
         
         # Adjust movement for isometric map
         self.move(dx, dy)
-
-        # self.rect.x = (self.map_x - self.map_y) * (tilewidth // 2) + (tilewidth // 2) - self.image.get_width() // 2
-        # self.rect.y = (self.map_x + self.map_y) * (tileheight // 2) - self.image.get_height()

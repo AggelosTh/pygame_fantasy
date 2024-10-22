@@ -21,7 +21,7 @@ class TiledMap:
                 for x, y, surf in layer.tiles():
                     iso_x = (x - y) * (self.tmx_data.tilewidth // 2) + self.center_x
                     iso_y = (x + y) * (self.tmx_data.tileheight // 2) + self.center_y
-                    pos = (iso_x, iso_y)
+                    pos = (iso_x, iso_y - 100)
                     Tile(pos=pos, surf=surf, groups=self.sprite_group)
 
     def draw(self, surface):

@@ -1,6 +1,7 @@
 import sys
 import pygame
-from entities import Player, screen, screen_center, tmx_map, clock
+from entities import Player, tmx_map, clock
+from screen import screen_center, screen
 
 ###### Helper functions ######
 
